@@ -804,7 +804,8 @@ const cU={};['uS','uB','uA'].forEach(n=>cU[n]=gl.getUniformLocation(compProg,n))
 const noiseTex=mkNoiseTex(),ditherTex=mkNoiseTex();
 function hex2rgb(h){let v=parseInt(h.slice(1),16);return[(v>>16&255)/255,(v>>8&255)/255,(v&255)/255];}
 function gv(id){const el=document.getElementById(id);return el?+el.value:0;}
-function gc(id){return hex2rgb(document.getElementById(id).value);}
+const COLOR_DEFAULTS={cDense:'#ff6030',cThin:'#1b0d3c',cCenter:'#ffffff',cEdge:'#2d1155',cStar:'#ffffff',cLight:'#ff9060',cCircleColor:'#00cfff',cNodeColor:'#ffaa44',cNodeHoverColor:'#ffffff'};
+function gc(id){const el=document.getElementById(id);return hex2rgb(el?el.value:COLOR_DEFAULTS[id]||'#ffffff');}
 document.querySelectorAll('input[type=range]').forEach(el=>{let v=document.getElementById('v'+el.id.slice(1));if(v)el.addEventListener('input',()=>v.textContent=el.value);});
 
 const cardEl=document.getElementById('nodeCard');
